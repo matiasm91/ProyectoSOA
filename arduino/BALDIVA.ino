@@ -5,7 +5,7 @@
 
 /////////////////////Variables globales////////////////////////
 
-/* Variables globales del modulo de bluetooth. */
+/** Variables globales del modulo de bluetooth. **/
 SoftwareSerial BTSerial(10, 11); //RX | TX
 #define LED 8 //LED para simular el prendido y apagado de la maquina.
 
@@ -13,7 +13,7 @@ String mensaje_new;            // Mensaje nuevo recibido por Bluetooth
 String mensaje_old;            // Mensaje viejo recibido por Bluetooth
 /** Fin de variables globales del modulo de bluetooth. **/
 
-/* Variables gloabales del modulo de la balanza y para controlar el servo. */
+/* Variables globales del modulo de la balanza y para controlar el servo. */
 #define DOUT A1
 #define CLK  A0
 
@@ -21,7 +21,7 @@ HX711 balanza(DOUT, CLK);
 int pinMotor = 3;        // Pin de Motor de cinta transportadora
 int pinServo = 6;        // Pin de ServoMotor
 Servo servoMotor;
-/* Fin de variables gloabales del modulo de la balanza y para controlar el servo. */
+/* Fin de variables globales del modulo de la balanza y para controlar el servo. */
 
 double peso;             // Peso actual en gramos
 double pesoSimulado=0.0;
@@ -66,16 +66,11 @@ void enviarPeso()
   
   // Se toma el promedio de 20 mediciones
   peso = balanza.get_units(20);
-  //peso = simuladorPeso();
 
   // Peso siempre positivo
   if (peso < 0.0) {
     peso = 0.0;
   }
-  /*Serial.print("Peso: ");
-  Serial.print(peso);
-  Serial.print(" - ");
-  Serial.print("ValorPesoString: ");*/
   dtostrf(peso, 10, 4, valorPesoString);
   Serial.print("Peso: ");
   Serial.println(valorPesoString);
@@ -122,7 +117,7 @@ void realizarAccion(String mensaje){
     Serial.println(mensaje);
     regularVelocidadCinta(mensaje);
   }
-  }
+}
 
 void regularVelocidadCinta(String mensaje){
   unsigned long number;
@@ -135,7 +130,7 @@ void regularVelocidadCinta(String mensaje){
   Serial.println(number);
   analogWrite(pinMotor, number);
 
- }
+}
 
 void encenderCinta() {
   analogWrite(pinMotor, 255);
@@ -150,11 +145,5 @@ void volcarTara(int anguloApertura, int tiempo) {
   servoMotor.write(anguloApertura);
   delay(tiempo);
   servoMotor.write(0);
-}
-
-
-double simuladorPeso(){
-  pesoSimulado+=(((double)rand()/(double)RAND_MAX))*0.001;
-  return pesoSimulado;
 }
 
