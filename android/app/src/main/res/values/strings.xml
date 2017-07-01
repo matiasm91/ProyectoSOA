@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BALDIVA</string>
+    <string name="action_settings">Settings</string>
+    <string name="dispositivosDisp">Dispositivos disponibles</string>
+    <string name="unidadesPesadas">Unidades pesadas</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="fijarPesoUnitario">Fijar peso unitario</string>
+    <string name="pesoActual">Peso actual</string>
+    <string name="volcarTara">Volcar tara</string>
+    <string name="desconetar">Desconectar</string>
+    <string name="cantMax">Cantidad máxima</string>
+    <string name="cintaTrans">Cinta transportadora</string>
+    <string name="pesoInicial">0 gr.</string>
+    <string name="cantInicial">0</string>
+</resources>
